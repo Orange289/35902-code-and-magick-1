@@ -29,7 +29,6 @@ var renderTitle = function (ctx, startX, titleColor) {
 var renderHistogram = function (ctx, names, times, startX, hHeight, hWidth, hIndentX, hIndentY) {
     var max = -1;
     var YOUR_COLOR = 'rgba(255, 0, 0, 1)';
-    var PLAYERS_COLOR = 'rgba(0, 0, 255, ' + Math.random() + ' )';
     var NAME_COLOR = 'rgb(0, 0, 255)';
     var TIME_COLOR = 'rgb(0, 0, 0)';
 
@@ -41,6 +40,7 @@ var renderHistogram = function (ctx, names, times, startX, hHeight, hWidth, hInd
     var step = hHeight / max;
 
     for (var j = 0; j < times.length; j++) {
+        var PLAYERS_COLOR = 'rgba(0, 0, 255, ' + Math.random() + ' )';
 
         ctx.fillStyle = ((names[j] === 'Вы') ? YOUR_COLOR : PLAYERS_COLOR);
 
@@ -58,11 +58,18 @@ var renderHistogram = function (ctx, names, times, startX, hHeight, hWidth, hInd
 window.renderStatistics = function (ctx, names, times) {
 
     var startX = 135;
+    var cloudMainColor = 'rgb(255, 255, 255)';
+    var cloudShadowColor = 'rgba(0, 0, 0, 0.7)';
+    var titleColor = 'rgb(117, 18, 142)';
+    var histHeight = 150;
+    var histWidth = 40;
+    var histIndentX = 50;
+    var histIndentY = 90;
 
-    renderCloud(ctx, 'rgb(255, 255, 255)', 'rgba(0, 0, 0, 0.7)');
+    renderCloud(ctx, cloudMainColor, cloudShadowColor);
 
-    renderTitle(ctx, startX, 'rgb(117, 18, 142)');
+    renderTitle(ctx, startX, titleColor);
 
-    renderHistogram(ctx, names, times, startX, 150, 40, 50, 90);
+    renderHistogram(ctx, names, times, startX, histHeight, histWidth, histIndentX, histIndentY);
 
 };
